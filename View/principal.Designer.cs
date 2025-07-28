@@ -70,7 +70,7 @@
             btnAnexar2.Name = "btnAnexar2";
             btnAnexar2.Size = new Size(157, 23);
             btnAnexar2.TabIndex = 6;
-            btnAnexar2.Text = "Anexar Arquivo 1...";
+            btnAnexar2.Text = "Anexar Arquivo 2...";
             btnAnexar2.UseVisualStyleBackColor = true;
             btnAnexar2.Click += btnAnexar2_Click;
             // 
@@ -90,7 +90,7 @@
             btnAnexar3.Name = "btnAnexar3";
             btnAnexar3.Size = new Size(157, 23);
             btnAnexar3.TabIndex = 7;
-            btnAnexar3.Text = "Anexar Arquivo 1...";
+            btnAnexar3.Text = "Anexar Arquivo 3...";
             btnAnexar3.UseVisualStyleBackColor = true;
             btnAnexar3.Click += btnAnexar3_Click;
             // 
@@ -139,6 +139,7 @@
             button1.Size = new Size(69, 30);
             button1.TabIndex = 11;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // app
             // 
