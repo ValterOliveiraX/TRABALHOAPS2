@@ -8,5 +8,27 @@ namespace WinFormsApp2.Model
 {
     public class Tape
     {
+        // Propriedades que correspondem às colunas do seu Excel.
+        // Use os tipos de dados corretos (int, string, decimal, DateTime, etc.)
+        public int idVagao { get; set; }
+        public int Rodeiro { get; set; }
+        public int TapeVagao { get; set; }
+
+        // Opcional: Sobrescrever o método Equals para facilitar comparações
+        // Isso é útil para encontrar itens idênticos em duas listas diferentes usando LINQ.
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            Tape outro = (Tape)obj;
+            return this.idVagao == outro.idVagao; // Dois produtos são considerados "iguais" se tiverem o mesmo ID.
+        }
+
+        public override int GetHashCode()
+        {
+            return this.idVagao.GetHashCode();
+        }
     }
 }
