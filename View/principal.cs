@@ -21,13 +21,13 @@ namespace WinFormsApp2
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 // Define o título da janela de seleção de arquivo
-            
 
-            // Define os filtros de arquivo para mostrar planilhas do Excel.
-            // O formato é "Descrição Visível|*.extensao1;*.extensao2"
-            // Aqui incluímos os formatos modernos (.xlsx) e os mais antigos (.xls).
-            openFileDialog1.Filter = "Planilhas Excel (*.xlsx;*.xls)|*.xlsx;*.xls|Todos os arquivos (*.*)|*.*";
-           
+
+                // Define os filtros de arquivo para mostrar planilhas do Excel.
+                // O formato é "Descrição Visível|*.extensao1;*.extensao2"
+                // Aqui incluímos os formatos modernos (.xlsx) e os mais antigos (.xls).
+                openFileDialog1.Filter = "Planilhas Excel (*.xlsx;*.xls)|*.xlsx;*.xls|Todos os arquivos (*.*)|*.*";
+
 
             // Abre a janela de seleção de arquivo e verifica se o usuário clicou em "OK"
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -95,6 +95,21 @@ namespace WinFormsApp2
         {
             // Esta linha fecha o formulário atual.
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
         // primeiro botçao de anexar arquivo
 

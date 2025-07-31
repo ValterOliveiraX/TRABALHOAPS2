@@ -11,6 +11,7 @@ namespace WinFormsApp2.Model
         // Propriedades que correspondem às colunas do seu Excel.
         // Use os tipos de dados corretos (int, string, decimal, DateTime, etc.)
         public int idVagao { get; set; }
+        public int Vagao { get; set; }
         public int Rodeiro { get; set; }
         public int km{ get; set; }
 

@@ -38,8 +38,11 @@
             btnAnexar3 = new Button();
             txtCaminhoArquivo = new TextBox();
             groupBox1 = new GroupBox();
+            textBox1 = new TextBox();
+            btnAnexar4 = new Button();
             panel1 = new Panel();
             button1 = new Button();
+            maskedTextBox1 = new MaskedTextBox();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -50,17 +53,17 @@
             // 
             // txtCaminhoArquivo3
             // 
-            txtCaminhoArquivo3.Location = new Point(201, 150);
+            txtCaminhoArquivo3.Location = new Point(275, 150);
             txtCaminhoArquivo3.Name = "txtCaminhoArquivo3";
-            txtCaminhoArquivo3.Size = new Size(394, 23);
+            txtCaminhoArquivo3.Size = new Size(448, 23);
             txtCaminhoArquivo3.TabIndex = 5;
             txtCaminhoArquivo3.TextChanged += textBox3_TextChanged;
             // 
             // txtCaminhoArquivo2
             // 
-            txtCaminhoArquivo2.Location = new Point(201, 93);
+            txtCaminhoArquivo2.Location = new Point(275, 93);
             txtCaminhoArquivo2.Name = "txtCaminhoArquivo2";
-            txtCaminhoArquivo2.Size = new Size(394, 23);
+            txtCaminhoArquivo2.Size = new Size(448, 23);
             txtCaminhoArquivo2.TabIndex = 4;
             txtCaminhoArquivo2.TextChanged += textBox2_TextChanged;
             // 
@@ -68,9 +71,9 @@
             // 
             btnAnexar2.Location = new Point(14, 92);
             btnAnexar2.Name = "btnAnexar2";
-            btnAnexar2.Size = new Size(157, 23);
+            btnAnexar2.Size = new Size(239, 23);
             btnAnexar2.TabIndex = 6;
-            btnAnexar2.Text = "Anexar Arquivo 2...";
+            btnAnexar2.Text = "planilha_lotes_com_sequencia";
             btnAnexar2.UseVisualStyleBackColor = true;
             btnAnexar2.Click += btnAnexar2_Click;
             // 
@@ -78,9 +81,9 @@
             // 
             btnAnexar.Location = new Point(14, 37);
             btnAnexar.Name = "btnAnexar";
-            btnAnexar.Size = new Size(162, 23);
+            btnAnexar.Size = new Size(239, 23);
             btnAnexar.TabIndex = 0;
-            btnAnexar.Text = "Anexar Arquivo 1...";
+            btnAnexar.Text = "planilha_tape_rodeiros";
             btnAnexar.UseVisualStyleBackColor = true;
             btnAnexar.Click += button1_Click;
             // 
@@ -88,37 +91,57 @@
             // 
             btnAnexar3.Location = new Point(14, 149);
             btnAnexar3.Name = "btnAnexar3";
-            btnAnexar3.Size = new Size(157, 23);
+            btnAnexar3.Size = new Size(239, 23);
             btnAnexar3.TabIndex = 7;
-            btnAnexar3.Text = "Anexar Arquivo 3...";
+            btnAnexar3.Text = "planilha_quilometragem_rodeiros";
             btnAnexar3.UseVisualStyleBackColor = true;
             btnAnexar3.Click += btnAnexar3_Click;
             // 
             // txtCaminhoArquivo
             // 
             txtCaminhoArquivo.BackColor = SystemColors.ControlLightLight;
-            txtCaminhoArquivo.Location = new Point(201, 37);
+            txtCaminhoArquivo.Location = new Point(275, 38);
             txtCaminhoArquivo.Name = "txtCaminhoArquivo";
             txtCaminhoArquivo.ReadOnly = true;
-            txtCaminhoArquivo.Size = new Size(394, 23);
+            txtCaminhoArquivo.Size = new Size(448, 23);
             txtCaminhoArquivo.TabIndex = 3;
             txtCaminhoArquivo.TextChanged += textBox1_TextChanged;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.InactiveBorder;
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(btnAnexar4);
             groupBox1.Controls.Add(txtCaminhoArquivo);
             groupBox1.Controls.Add(btnAnexar3);
             groupBox1.Controls.Add(btnAnexar);
             groupBox1.Controls.Add(btnAnexar2);
             groupBox1.Controls.Add(txtCaminhoArquivo2);
             groupBox1.Controls.Add(txtCaminhoArquivo3);
-            groupBox1.Location = new Point(369, 289);
+            groupBox1.Location = new Point(259, 289);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(616, 249);
+            groupBox1.Size = new Size(729, 272);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
-            groupBox1.Text = "anexar arquivos";
+            groupBox1.Text = "anexar arquivos aqui";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(275, 211);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(445, 23);
+            textBox1.TabIndex = 9;
+            textBox1.TextChanged += textBox1_TextChanged_1;
+            // 
+            // btnAnexar4
+            // 
+            btnAnexar4.Location = new Point(14, 211);
+            btnAnexar4.Name = "btnAnexar4";
+            btnAnexar4.Size = new Size(239, 23);
+            btnAnexar4.TabIndex = 8;
+            btnAnexar4.Text = "planilha_notas_manutencao";
+            btnAnexar4.UseVisualStyleBackColor = true;
+            btnAnexar4.Click += button2_Click;
             // 
             // panel1
             // 
@@ -141,6 +164,17 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.BackColor = SystemColors.ButtonFace;
+            maskedTextBox1.Font = new Font("Bahnschrift SemiCondensed", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            maskedTextBox1.Location = new Point(386, 40);
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(537, 46);
+            maskedTextBox1.TabIndex = 11;
+            maskedTextBox1.Text = "Adequação do supermercado de rodeiros";
+            maskedTextBox1.MaskInputRejected += maskedTextBox1_MaskInputRejected;
+            // 
             // app
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -149,6 +183,7 @@
             BackgroundImage = Properties.Resources._5189_20250203085217__1_;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1010, 560);
+            Controls.Add(maskedTextBox1);
             Controls.Add(panel1);
             Controls.Add(groupBox1);
             DoubleBuffered = true;
@@ -162,6 +197,7 @@
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -176,5 +212,8 @@
         private GroupBox groupBox1;
         private Panel panel1;
         private Button button1;
+        private Button btnAnexar4;
+        private TextBox textBox1;
+        private MaskedTextBox maskedTextBox1;
     }
 }
