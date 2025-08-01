@@ -25,7 +25,7 @@ namespace WinFormsApp2.View
             InitializeComponent();
             dgvResultados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // Configura a licença da EPPlus (necessário para projetos não comerciais)
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+           // ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
         private void label1_Click(object sender, EventArgs e)
