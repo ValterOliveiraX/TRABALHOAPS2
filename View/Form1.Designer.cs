@@ -36,9 +36,10 @@
             // 
             // btnProcessar
             // 
-            btnProcessar.Location = new Point(187, 20);
+            btnProcessar.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
+            btnProcessar.Location = new Point(12, 65);
             btnProcessar.Name = "btnProcessar";
-            btnProcessar.Size = new Size(176, 23);
+            btnProcessar.Size = new Size(315, 79);
             btnProcessar.TabIndex = 0;
             btnProcessar.Text = "Carregar e Processar Arquivos";
             btnProcessar.UseVisualStyleBackColor = true;
@@ -47,18 +48,21 @@
             // dgvResultados
             // 
             dgvResultados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvResultados.BackgroundColor = SystemColors.Window;
             dgvResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvResultados.Location = new Point(12, 97);
+            dgvResultados.Location = new Point(7, 147);
             dgvResultados.Name = "dgvResultados";
-            dgvResultados.Size = new Size(776, 341);
+            dgvResultados.Size = new Size(776, 332);
             dgvResultados.TabIndex = 1;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(382, 20);
+            lblStatus.BackColor = SystemColors.ControlLightLight;
+            lblStatus.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
+            lblStatus.Location = new Point(333, 131);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(0, 15);
+            lblStatus.Size = new Size(0, 25);
             lblStatus.TabIndex = 2;
             lblStatus.Click += label1_Click;
             // 
@@ -66,10 +70,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.ActiveCaptionText;
+            BackgroundImage = Properties.Resources._5189_20250203085217__1_;
+            ClientSize = new Size(800, 675);
             Controls.Add(lblStatus);
             Controls.Add(dgvResultados);
             Controls.Add(btnProcessar);
+            ForeColor = SystemColors.ControlDarkDark;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
