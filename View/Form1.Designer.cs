@@ -72,6 +72,7 @@
             Controls.Add(btnProcessar);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvResultados).EndInit();
             ResumeLayout(false);
             PerformLayout();

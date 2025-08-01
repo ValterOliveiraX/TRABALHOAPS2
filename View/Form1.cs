@@ -25,7 +25,7 @@ namespace WinFormsApp2.View
             InitializeComponent();
             dgvResultados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // Configura a licença da EPPlus (necessário para projetos não comerciais)
-           // ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+         //  ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -108,6 +108,10 @@ namespace WinFormsApp2.View
             return string.Empty;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
 
         public List<T> LerXlsx<T>(string caminhoArquivo) where T : new()
         {
@@ -157,48 +161,42 @@ namespace WinFormsApp2.View
 
 
 
-// ===================================================================
-// LEMBRETE IMPORTANTE SOBRE AS CLASSES E NOMES DE COLUNAS
-// ===================================================================
-// O nome da propriedade na classe C# deve ser o mesmo do cabeçalho no Excel, mas SEM ESPAÇOS.
-// Ex: Coluna "Nota de manutenção" no Excel -> Propriedade "NotaDeManutencao" no C#
+    // ===================================================================
+    // LEMBRETE IMPORTANTE SOBRE AS CLASSES E NOMES DE COLUNAS
+    // ===================================================================
+    // O nome da propriedade na classe C# deve ser o mesmo do cabeçalho no Excel, mas SEM ESPAÇOS.
+    // Ex: Coluna "Nota de manutenção" no Excel -> Propriedade "NotaDeManutencao" no C#
 
-public class LoteSequencia
+    public class LoteSequencia
     {
-        public int Id { get; set; }
-        public string Lote { get; set; }
+        public string Id { get; set; }      // Alterado para string
+        public string Lote { get; set; }    // Alterado para string
         public int Vagao { get; set; }
-        public int Rodeiro { get; set; }
+        public string Rodeiro { get; set; } // Alterado para string
         public int Sequencia { get; set; }
     }
 
     public class TapeRodeiro
     {
-        public int Id { get; set; }
+        public string Id { get; set; }      // Alterado para string
         public int Vagao { get; set; }
-        public int Rodeiro { get; set; }
+        public string Rodeiro { get; set; } // Alterado para string
         public int Tape { get; set; }
     }
 
     public class QuilometragemRodeiro
     {
-        public int Id { get; set; }
+        public string Id { get; set; }      // Alterado para string
         public int Vagao { get; set; }
-        public int Rodeiro { get; set; }
+        public string Rodeiro { get; set; } // Alterado para string
         public int Quilometragem { get; set; }
     }
 
     public class NotaManutencao
     {
-        public int Id { get; set; }
+        public string Id { get; set; }      // Alterado para string
         public int Vagao { get; set; }
-        public int Rodeiro { get; set; }
-        // O nome da propriedade deve corresponder EXATAMENTE ao nome da coluna no Excel.
-        // Se a coluna for "Nota de manutenção", a propriedade deve ser "Nota de manutenção".
-        // O C# não permite espaços em nomes de propriedade, então certifique-se
-        // que o nome da coluna no seu Excel seja "NotaDeManutencao" (sem espaços)
-        // ou ajuste o código para ler a coluna pelo nome.
+        public string Rodeiro { get; set; } // Alterado para string
         public string NotaDeManutencao { get; set; }
     }
-
 }
