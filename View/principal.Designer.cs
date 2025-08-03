@@ -33,8 +33,8 @@
             colorDialog1 = new ColorDialog();
             panel1 = new Panel();
             button1 = new Button();
-            maskedTextBox1 = new MaskedTextBox();
             btnAbrirProcessador = new Button();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,6 +49,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1012, 36);
             panel1.TabIndex = 10;
+            panel1.Paint += panel1_Paint;
             // 
             // button1
             // 
@@ -63,26 +64,30 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
-            // maskedTextBox1
-            // 
-            maskedTextBox1.BackColor = SystemColors.ButtonFace;
-            maskedTextBox1.Font = new Font("Bahnschrift SemiCondensed", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            maskedTextBox1.Location = new Point(386, 40);
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(537, 46);
-            maskedTextBox1.TabIndex = 11;
-            maskedTextBox1.Text = "Adequação do supermercado de rodeiros";
-            maskedTextBox1.MaskInputRejected += maskedTextBox1_MaskInputRejected;
-            // 
             // btnAbrirProcessador
             // 
+            btnAbrirProcessador.BackColor = Color.White;
+            btnAbrirProcessador.BackgroundImageLayout = ImageLayout.Center;
+            btnAbrirProcessador.Font = new Font("Bahnschrift SemiCondensed", 24F);
             btnAbrirProcessador.Location = new Point(386, 105);
             btnAbrirProcessador.Name = "btnAbrirProcessador";
-            btnAbrirProcessador.Size = new Size(113, 42);
+            btnAbrirProcessador.Size = new Size(118, 57);
             btnAbrirProcessador.TabIndex = 12;
             btnAbrirProcessador.Text = "INICIAR";
-            btnAbrirProcessador.UseVisualStyleBackColor = true;
+            btnAbrirProcessador.UseVisualStyleBackColor = false;
             btnAbrirProcessador.Click += btnAbrirProcessador_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Bahnschrift SemiCondensed", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(386, 47);
+            label1.Name = "label1";
+            label1.Size = new Size(570, 42);
+            label1.TabIndex = 13;
+            label1.Text = "Adequação do supermercado de rodeiros";
+            label1.Click += label1_Click;
             // 
             // app
             // 
@@ -92,8 +97,8 @@
             BackgroundImage = Properties.Resources._5189_20250203085217__1_;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1010, 560);
+            Controls.Add(label1);
             Controls.Add(btnAbrirProcessador);
-            Controls.Add(maskedTextBox1);
             Controls.Add(panel1);
             DoubleBuffered = true;
             ForeColor = SystemColors.ControlText;
@@ -113,7 +118,7 @@
         private ColorDialog colorDialog1;
         private Panel panel1;
         private Button button1;
-        private MaskedTextBox maskedTextBox1;
         private Button btnAbrirProcessador;
+        private Label label1;
     }
 }

@@ -10,7 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WinFormsApp2.Model;
+// using WinFormsApp2.Model; -> exempo de cmo se deve chamar uma classe externa
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using LicenseContext = OfficeOpenXml.LicenseContext;
 namespace WinFormsApp2.View
 {
@@ -20,6 +21,7 @@ namespace WinFormsApp2.View
         {
             InitializeComponent();
             dgvResultados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
 
             // Linha da licença para a versão 6.x do EPPlus.
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
@@ -41,9 +43,13 @@ namespace WinFormsApp2.View
             {
                 lblStatus.Text = "Selecionando arquivos...";
                 var caminhoLotes = SelecionarArquivo("Selecione a planilha de Lotes com Sequência (.xlsx)");
+                Arq1.Text = caminhoLotes.ToString();
                 var caminhoTape = SelecionarArquivo("Selecione a planilha de Tape dos Rodeiros (.xlsx)");
+                Arq2.Text = caminhoTape.ToString();
                 var caminhoKm = SelecionarArquivo("Selecione a planilha de Quilometragem (.xlsx)");
+                Arq3.Text = caminhoKm.ToString();
                 var caminhoNotas = SelecionarArquivo("Selecione a planilha de Notas de Manutenção (.xlsx)");
+                Arq4.Text = caminhoNotas.ToString();
 
                 if (string.IsNullOrEmpty(caminhoLotes) || string.IsNullOrEmpty(caminhoTape) ||
                     string.IsNullOrEmpty(caminhoKm) || string.IsNullOrEmpty(caminhoNotas))
@@ -55,35 +61,19 @@ namespace WinFormsApp2.View
                 lblStatus.Text = "Lendo e processando dados...";
                 this.Cursor = Cursors.WaitCursor;
 
-                var lotes = LerXlsx<LoteSequencia>(caminhoLotes);
-                var tapes = LerXlsx<TapeRodeiro>(caminhoTape);
-                var quilometragens = LerXlsx<QuilometragemRodeiro>(caminhoKm);
-                var notasManutencao = LerXlsx<NotaManutencao>(caminhoNotas);
+                // 1. Cria uma instância do nosso serviço de negócio
+                var servico = new RodeiroService();
 
-                var dadosUnidos = from lote in lotes
-                                  join km in quilometragens on lote.Id equals km.Id
-                                  join tape in tapes on lote.Id equals tape.Id
-                                  join nota in notasManutencao on lote.Id equals nota.Id into notasGroup
-                                  from n in notasGroup.DefaultIfEmpty()
-                                  select new
-                                  {
-                                      lote.Id,
-                                      lote.Lote,
-                                      lote.Vagao,
-                                      lote.Rodeiro,
-                                      lote.Sequencia,
-                                      tape.Tape,
-                                      km.Quilometragem,
-                                      NotaDeManutencao = n?.NotaDeManutencao
-                                  };
+                // 2. Chama o método do serviço, delegando todo o trabalho
+                var resultados = servico.ProcessarArquivosRodeiro(caminhoLotes, caminhoTape, caminhoKm, caminhoNotas);
 
-                var dadosFiltrados = dadosUnidos
-                    .Where(d => d.Quilometragem < 100000 && string.IsNullOrEmpty(d.NotaDeManutencao))
-                    .ToList();
+                // 3. Exibe os resultados na tela
+                dgvResultados.DataSource = resultados;
+                var contagem = (resultados as System.Collections.IList).Count;
+                lblStatus.Text = $"Processamento concluído. {contagem} registros encontrados.";
 
-                dgvResultados.DataSource = dadosFiltrados;
-                lblStatus.Text = $"Processamento concluído. {dadosFiltrados.Count} registros encontrados.";
-                this.Cursor = Cursors.Default;
+
+
             }
             catch (Exception ex)
             {
@@ -107,98 +97,59 @@ namespace WinFormsApp2.View
             return string.Empty;
         }
 
-        // ===================================================================
-        // FUNÇÃO DE LEITURA COM A CORREÇÃO PARA O ERRO "INDEX OUT OF RANGE"
-        // ===================================================================
-
-        public List<T> LerXlsx<T>(string caminhoArquivo) where T : new()
+        private void Arq3_TextChanged(object sender, EventArgs e)
         {
-            var lista = new List<T>();
-            var fileInfo = new FileInfo(caminhoArquivo);
 
-            using (var package = new ExcelPackage(fileInfo))
-            {
-                var worksheet = package.Workbook.Worksheets.FirstOrDefault();
-                if (worksheet == null) throw new Exception($"Nenhuma planilha encontrada no arquivo: {caminhoArquivo}");
-
-                var headers = worksheet.Cells[1, 1, 1, worksheet.Dimension.End.Column]
-                                       .Select(cell => cell.Text.Trim().Replace(" ", ""))
-                                       .ToList();
-
-                for (int rowNum = 2; rowNum <= worksheet.Dimension.End.Row; rowNum++)
-                {
-                    var obj = new T();
-                    var properties = typeof(T).GetProperties();
-
-                    for (int colNum = 1; colNum <= worksheet.Dimension.End.Column; colNum++)
-                    {
-                        // VERIFICAÇÃO DE SEGURANÇA: Só processa se o índice do cabeçalho for válido
-                        if (colNum - 1 < headers.Count)
-                        {
-                            var header = headers[colNum - 1];
-                            var property = properties.FirstOrDefault(p => p.Name.Equals(header, StringComparison.OrdinalIgnoreCase));
-
-                            if (property != null)
-                            {
-                                var cellValue = worksheet.Cells[rowNum, colNum].Value;
-                                if (cellValue != null)
-                                {
-                                    try
-                                    {
-                                        var convertedValue = Convert.ChangeType(cellValue, property.PropertyType);
-                                        property.SetValue(obj, convertedValue);
-                                    }
-                                    catch (FormatException)
-                                    {
-                                        property.SetValue(obj, cellValue.ToString());
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    lista.Add(obj);
-                }
-            }
-            return lista;
         }
-    }
 
-    // ===================================================================
-    // LEMBRETE IMPORTANTE SOBRE AS CLASSES E NOMES DE COLUNAS
-    // ===================================================================
-    // O nome da propriedade na classe C# deve ser o mesmo do cabeçalho no Excel, mas SEM ESPAÇOS.
-    // Ex: Coluna "Nota de manutenção" no Excel -> Propriedade "NotaDeManutencao" no C#
-    // Classes com os tipos de dados corrigidos
-    public class LoteSequencia
-    {
-        public string Id { get; set; }
-        public string Lote { get; set; }
-        public int Vagao { get; set; }
-        public string Rodeiro { get; set; }
-        public int Sequencia { get; set; }
-    }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
-    public class TapeRodeiro
-    {
-        public string Id { get; set; }
-        public int Vagao { get; set; }
-        public string Rodeiro { get; set; }
-        public int Tape { get; set; }
-    }
+        }
 
-    public class QuilometragemRodeiro
-    {
-        public string Id { get; set; }
-        public int Vagao { get; set; }
-        public string Rodeiro { get; set; }
-        public int Quilometragem { get; set; }
-    }
+        private void flowLayoutPanelVagoes_Paint(object sender, PaintEventArgs e)
+        {
 
-    public class NotaManutencao
-    {
-        public string Id { get; set; }
-        public int Vagao { get; set; }
-        public string Rodeiro { get; set; }
-        public string NotaDeManutencao { get; set; }
+        }
+
+        // ===================================================================
+        // NOVA FUNÇÃO PARA CRIAR A INTERFACE GRÁFICA NO GRID
+        // ===================================================================
+        private void PopularGridDeVagoes(List<dynamic> resultados)
+        {
+            // 1. Limpa o painel de qualquer resultado anterior
+            flowLayoutPanelVagoes.Controls.Clear();
+
+            if (resultados == null || !resultados.Any()) return;
+
+            // 2. Agrupa os resultados por Vagão
+            var vagoesAgrupados = resultados
+                .GroupBy(r => r.Vagao)
+                .OrderBy(g => g.Key); // Ordena pelo número do vagão
+
+            // 3. Para cada grupo (vagão), cria um card
+            foreach (var grupoVagao in vagoesAgrupados)
+            {
+                // Cria um GroupBox para representar o vagão
+                GroupBox cardVagao = new GroupBox();
+                cardVagao.Text = $"Vagão: {grupoVagao.Key}"; // Título do card
+                cardVagao.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+                cardVagao.Size = new Size(180, 70); // Tamanho do card
+                cardVagao.Margin = new Padding(5); // Espaçamento entre os cards
+
+                // Cria uma Label para mostrar os detalhes dentro do card
+                Label detalhesLabel = new Label();
+                detalhesLabel.Text = $"Rodeiros filtrados: {grupoVagao.Count()}";
+                detalhesLabel.Dock = DockStyle.Fill; // Ocupa todo o espaço do card
+                detalhesLabel.TextAlign = ContentAlignment.MiddleCenter;
+                detalhesLabel.Font = new Font("Segoe UI", 10F);
+
+                // Adiciona a label dentro do GroupBox
+                cardVagao.Controls.Add(detalhesLabel);
+
+                // 4. Adiciona o card pronto ao FlowLayoutPanel
+                flowLayoutPanelVagoes.Controls.Add(cardVagao);
+            }
+        }
     }
 }
