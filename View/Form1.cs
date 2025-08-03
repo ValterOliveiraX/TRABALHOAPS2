@@ -113,7 +113,7 @@ namespace WinFormsApp2.View
         }
 
         // ===================================================================
-        // NOVA FUNÇÃO PARA CRIAR A INTERFACE GRÁFICA NO GRID
+        // FUNÇÃO PARA CRIAR A INTERFACE GRÁFICA NO GRID DO PROGRAMA.
         // ===================================================================
         private void PopularGridDeVagoes(List<dynamic> resultados)
         {
