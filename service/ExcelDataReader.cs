@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace WinFormsApp2.View
+namespace WinFormsApp2.service
 {
     public class ExcelDataReader
     {

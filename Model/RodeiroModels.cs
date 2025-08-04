@@ -1,6 +1,6 @@
 ﻿// Arquivo: RodeiroModels.cs
 
-namespace WinFormsApp2.View // Certifique-se de que o namespace é o mesmo do seu projeto
+namespace WinFormsApp2.Model // Certifique-se de que o namespace é o mesmo do seu projeto
 {
     public class LoteSequencia
     {

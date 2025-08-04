@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsApp2.service;
+
 // using WinFormsApp2.Model; -> exempo de cmo se deve chamar uma classe externa
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using LicenseContext = OfficeOpenXml.LicenseContext;
@@ -64,7 +66,9 @@ namespace WinFormsApp2.View
 
                 // 3. Exibe os resultados na tela
                 dgvResultados.DataSource = resultados;
-                //dgvResultados.DataSource = resultadosCompletos;
+                //resultadosCompletos = (List<dynamic>?)resultados;
+                resultadosCompletos = (resultados as System.Collections.IEnumerable).Cast<dynamic>().ToList();
+
                 var contagem = (resultados as System.Collections.IList).Count;
                 lblStatus.Text = $"Processamento concluído. {contagem} registros encontrados.";
 
@@ -94,20 +98,60 @@ namespace WinFormsApp2.View
             return string.Empty;
         }
 
+        private void btnExportarCsv_Click(object sender, EventArgs e)
+        {
+            // 1. Verifica se há dados para exportar
+            if (resultadosCompletos == null || !resultadosCompletos.Any())
+            {
+                MessageBox.Show("Não há dados para exportar. Por favor, processe os arquivos primeiro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Abre a caixa de diálogo para o usuário escolher onde salvar
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Arquivo CSV (*.csv)|*.csv";
+                saveFileDialog.Title = "Salvar Resultados como CSV";
+                saveFileDialog.FileName = $"Resultados_Rodeiros_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+                        lblStatus.Text = "Exportando para CSV...";
+
+                        // 3. Cria uma instância do nosso serviço de exportação
+                        var exporter = new CsvExporterService();
+
+                        // 4. Chama o método para gerar o arquivo
+                        exporter.ExportarParaCsv(resultadosCompletos, saveFileDialog.FileName);
+
+                        lblStatus.Text = "Arquivo CSV exportado com sucesso!";
+                        MessageBox.Show($"Arquivo salvo em:\n{saveFileDialog.FileName}", "Exportação Concluída", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ocorreu um erro ao exportar o arquivo CSV: {ex.Message}", "Erro de Exportação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lblStatus.Text = "Erro durante a exportação.";
+                    }
+                    finally
+                    {
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+            }
+        }
+
         private void Arq3_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
-
-
-
-        // NOVO: Método auxiliar que cria o arquivo Excel
+        //nao aplicado
         private void ExportarParaExcel(List<dynamic> dados, string caminho)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Garante a licença
@@ -154,5 +198,6 @@ namespace WinFormsApp2.View
         {
 
         }
+
     }
 }

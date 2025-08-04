@@ -3,8 +3,9 @@
 using OfficeOpenXml;
 using System;
 using System.Linq;
+using WinFormsApp2.Model;
 
-namespace WinFormsApp2.View
+namespace WinFormsApp2.service
 {
     public class RodeiroService
     {

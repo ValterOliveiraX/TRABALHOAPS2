@@ -35,7 +35,7 @@
             Arq3 = new TextBox();
             Arq4 = new TextBox();
             Arq1 = new TextBox();
-            label = new Label();
+            btnExportarCsv = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             // 
             dgvResultados.Location = new Point(3, 133);
             dgvResultados.Name = "dgvResultados";
-            dgvResultados.Size = new Size(785, 127);
+            dgvResultados.Size = new Size(785, 225);
             dgvResultados.TabIndex = 11;
             dgvResultados.CellContentClick += dgvResultados_CellContentClick;
             // 
@@ -103,17 +103,16 @@
             Arq1.TabIndex = 7;
             Arq1.TextChanged += textBox1_TextChanged;
             // 
-            // label
+            // btnExportarCsv
             // 
-            label.AutoSize = true;
-            label.BackColor = SystemColors.ButtonHighlight;
-            label.Font = new Font("Bahnschrift SemiCondensed", 15F);
-            label.Location = new Point(3, 275);
-            label.Name = "label";
-            label.Size = new Size(137, 24);
-            label.TabIndex = 8;
-            label.Text = "Filtrar na tabela:";
-            label.Click += label_Click;
+            btnExportarCsv.Font = new Font("Bahnschrift SemiCondensed", 15F);
+            btnExportarCsv.Location = new Point(3, 364);
+            btnExportarCsv.Name = "btnExportarCsv";
+            btnExportarCsv.Size = new Size(224, 41);
+            btnExportarCsv.TabIndex = 12;
+            btnExportarCsv.Text = "Exportar para CSV";
+            btnExportarCsv.UseVisualStyleBackColor = true;
+            btnExportarCsv.Click += btnExportarCsv_Click;
             // 
             // Form1
             // 
@@ -121,8 +120,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImage = Properties.Resources._5189_20250203085217__1_;
-            ClientSize = new Size(800, 512);
-            Controls.Add(label);
+            ClientSize = new Size(800, 417);
+            Controls.Add(btnExportarCsv);
             Controls.Add(Arq1);
             Controls.Add(Arq4);
             Controls.Add(Arq3);
@@ -148,6 +147,6 @@
         private TextBox Arq3;
         private TextBox Arq4;
         private TextBox Arq1;
-        private Label label;
+        private Button btnExportarCsv;
     }
 }

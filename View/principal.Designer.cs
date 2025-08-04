@@ -69,7 +69,7 @@
             btnAbrirProcessador.BackColor = Color.White;
             btnAbrirProcessador.BackgroundImageLayout = ImageLayout.Center;
             btnAbrirProcessador.Font = new Font("Bahnschrift SemiCondensed", 24F);
-            btnAbrirProcessador.Location = new Point(386, 105);
+            btnAbrirProcessador.Location = new Point(398, 149);
             btnAbrirProcessador.Name = "btnAbrirProcessador";
             btnAbrirProcessador.Size = new Size(118, 57);
             btnAbrirProcessador.TabIndex = 12;
@@ -81,12 +81,12 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Bahnschrift SemiCondensed", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(386, 47);
+            label1.Font = new Font("Bahnschrift SemiCondensed", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(337, 47);
             label1.Name = "label1";
-            label1.Size = new Size(570, 42);
+            label1.Size = new Size(616, 77);
             label1.TabIndex = 13;
-            label1.Text = "Adequação do supermercado de rodeiros";
+            label1.Text = "Adequação de Rodeiros";
             label1.Click += label1_Click;
             // 
             // app
