@@ -35,7 +35,9 @@
             Arq3 = new TextBox();
             Arq4 = new TextBox();
             Arq1 = new TextBox();
-            flowLayoutPanelVagoes = new FlowLayoutPanel();
+            label = new Label();
+            txtFiltro = new TextBox();
+            btnExportar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             SuspendLayout();
             // 
@@ -52,20 +54,18 @@
             // 
             // dgvResultados
             // 
-            dgvResultados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvResultados.BackgroundColor = SystemColors.Window;
-            dgvResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvResultados.Location = new Point(12, 143);
+            dgvResultados.Location = new Point(18, 110);
             dgvResultados.Name = "dgvResultados";
-            dgvResultados.Size = new Size(776, 135);
-            dgvResultados.TabIndex = 1;
+            dgvResultados.Size = new Size(240, 150);
+            dgvResultados.TabIndex = 11;
+            dgvResultados.CellContentClick += dgvResultados_CellContentClick;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
             lblStatus.BackColor = SystemColors.ControlLightLight;
             lblStatus.Font = new Font("Bahnschrift SemiCondensed", 15F);
-            lblStatus.Location = new Point(22, 126);
+            lblStatus.Location = new Point(12, 110);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(0, 24);
             lblStatus.TabIndex = 2;
@@ -105,15 +105,34 @@
             Arq1.TabIndex = 7;
             Arq1.TextChanged += textBox1_TextChanged;
             // 
-            // flowLayoutPanelVagoes
+            // label
             // 
-            flowLayoutPanelVagoes.AutoScroll = true;
-            flowLayoutPanelVagoes.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanelVagoes.Location = new Point(12, 309);
-            flowLayoutPanelVagoes.Name = "flowLayoutPanelVagoes";
-            flowLayoutPanelVagoes.Size = new Size(632, 149);
-            flowLayoutPanelVagoes.TabIndex = 8;
-            flowLayoutPanelVagoes.Paint += flowLayoutPanelVagoes_Paint;
+            label.AutoSize = true;
+            label.BackColor = SystemColors.ButtonHighlight;
+            label.Font = new Font("Bahnschrift SemiCondensed", 15F);
+            label.Location = new Point(3, 255);
+            label.Name = "label";
+            label.Size = new Size(137, 24);
+            label.TabIndex = 8;
+            label.Text = "Filtrar na tabela:";
+            // 
+            // txtFiltro
+            // 
+            txtFiltro.Location = new Point(231, 349);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(100, 23);
+            txtFiltro.TabIndex = 9;
+            txtFiltro.TextChanged += txtFiltro_TextChanged;
+            // 
+            // btnExportar
+            // 
+            btnExportar.Location = new Point(353, 350);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(157, 23);
+            btnExportar.TabIndex = 10;
+            btnExportar.Text = "Exportar para Excel";
+            btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.Click += btnExportar_Click;
             // 
             // Form1
             // 
@@ -122,7 +141,9 @@
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImage = Properties.Resources._5189_20250203085217__1_;
             ClientSize = new Size(800, 512);
-            Controls.Add(flowLayoutPanelVagoes);
+            Controls.Add(btnExportar);
+            Controls.Add(txtFiltro);
+            Controls.Add(label);
             Controls.Add(Arq1);
             Controls.Add(Arq4);
             Controls.Add(Arq3);
@@ -148,6 +169,8 @@
         private TextBox Arq3;
         private TextBox Arq4;
         private TextBox Arq1;
-        private FlowLayoutPanel flowLayoutPanelVagoes;
+        private Label label;
+        private TextBox txtFiltro;
+        private Button btnExportar;
     }
 }

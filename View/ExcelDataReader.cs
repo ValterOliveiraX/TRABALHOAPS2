@@ -1,5 +1,4 @@
 ﻿// Arquivo: ExcelDataReader.cs
-
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,8 @@ namespace WinFormsApp2.View
 {
     public class ExcelDataReader
     {
-        // Este método agora vive aqui, isolado e com uma única responsabilidade.
+        //Processado de arquivo excel.
+        
         public static List<T> LerXlsx<T>(string caminhoArquivo) where T : new()
         {
             var lista = new List<T>();
