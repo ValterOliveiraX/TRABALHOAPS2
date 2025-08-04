@@ -64,7 +64,7 @@ namespace WinFormsApp2.View
 
                 // 3. Exibe os resultados na tela
                 dgvResultados.DataSource = resultados;
-                dgvResultados.DataSource = resultadosCompletos;
+                //dgvResultados.DataSource = resultadosCompletos;
                 var contagem = (resultados as System.Collections.IList).Count;
                 lblStatus.Text = $"Processamento concluído. {contagem} registros encontrados.";
 
@@ -104,87 +104,8 @@ namespace WinFormsApp2.View
 
         }
 
-        // NOVO: Evento de filtro em tempo real
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            // Se não houver resultados, não faz nada
-            if (resultadosCompletos == null || !resultadosCompletos.Any()) return;
-
-            string textoFiltro = txtFiltro.Text.ToLower().Trim();
-
-            // Se o filtro está vazio, mostra todos os resultados
-            if (string.IsNullOrEmpty(textoFiltro))
-            {
-                dgvResultados.DataSource = resultadosCompletos;
-            }
-            else // Caso contrário, aplica o filtro
-            {
-                var dadosFiltrados = resultadosCompletos.Where(r =>
-                       r.Id.ToString().ToLower().Contains(textoFiltro)
-                    || r.Lote.ToString().ToLower().Contains(textoFiltro)
-                    || r.Vagao.ToString().ToLower().Contains(textoFiltro)
-                    || r.Rodeiro.ToString().ToLower().Contains(textoFiltro)
-                ).ToList();
-
-                dgvResultados.DataSource = dadosFiltrados;
-            }
-        }
 
 
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            List<dynamic> dadosParaExportar;
-            string textoFiltro = txtFiltro.Text.ToLower().Trim();
-
-            // 1. Reconstrói a lista a ser exportada com base no filtro atual
-            if (string.IsNullOrEmpty(textoFiltro))
-            {
-                // Se não há filtro, usa a lista completa
-                dadosParaExportar = resultadosCompletos;
-            }
-            else
-            {
-                // Se há filtro, aplica a mesma lógica de filtro novamente
-                dadosParaExportar = resultadosCompletos.Where(r =>
-                       r.Id.ToString().ToLower().Contains(textoFiltro)
-                    || r.Lote.ToString().ToLower().Contains(textoFiltro)
-                    || r.Vagao.ToString().ToLower().Contains(textoFiltro)
-                    || r.Rodeiro.ToString().ToLower().Contains(textoFiltro)
-                ).ToList();
-            }
-
-            // 2. Agora a verificação funciona corretamente
-            if (dadosParaExportar == null || !dadosParaExportar.Any())
-            {
-                MessageBox.Show("Não há dados na tabela para exportar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                saveFileDialog.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
-                saveFileDialog.Title = "Salvar arquivo Excel";
-                saveFileDialog.FileName = $"Rodeiros_Filtrados_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        this.Cursor = Cursors.WaitCursor;
-                        ExportarParaExcel(dadosParaExportar, saveFileDialog.FileName);
-                        MessageBox.Show("Dados exportados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Erro ao exportar: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        this.Cursor = Cursors.Default;
-                    }
-                }
-            }
-        }
 
         // NOVO: Método auxiliar que cria o arquivo Excel
         private void ExportarParaExcel(List<dynamic> dados, string caminho)
@@ -225,6 +146,11 @@ namespace WinFormsApp2.View
         }
 
         private void dgvResultados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label_Click(object sender, EventArgs e)
         {
 
         }

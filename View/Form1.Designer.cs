@@ -36,8 +36,6 @@
             Arq4 = new TextBox();
             Arq1 = new TextBox();
             label = new Label();
-            txtFiltro = new TextBox();
-            btnExportar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             SuspendLayout();
             // 
@@ -54,9 +52,9 @@
             // 
             // dgvResultados
             // 
-            dgvResultados.Location = new Point(18, 110);
+            dgvResultados.Location = new Point(3, 133);
             dgvResultados.Name = "dgvResultados";
-            dgvResultados.Size = new Size(240, 150);
+            dgvResultados.Size = new Size(785, 127);
             dgvResultados.TabIndex = 11;
             dgvResultados.CellContentClick += dgvResultados_CellContentClick;
             // 
@@ -110,29 +108,12 @@
             label.AutoSize = true;
             label.BackColor = SystemColors.ButtonHighlight;
             label.Font = new Font("Bahnschrift SemiCondensed", 15F);
-            label.Location = new Point(3, 255);
+            label.Location = new Point(3, 275);
             label.Name = "label";
             label.Size = new Size(137, 24);
             label.TabIndex = 8;
             label.Text = "Filtrar na tabela:";
-            // 
-            // txtFiltro
-            // 
-            txtFiltro.Location = new Point(231, 349);
-            txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(100, 23);
-            txtFiltro.TabIndex = 9;
-            txtFiltro.TextChanged += txtFiltro_TextChanged;
-            // 
-            // btnExportar
-            // 
-            btnExportar.Location = new Point(353, 350);
-            btnExportar.Name = "btnExportar";
-            btnExportar.Size = new Size(157, 23);
-            btnExportar.TabIndex = 10;
-            btnExportar.Text = "Exportar para Excel";
-            btnExportar.UseVisualStyleBackColor = true;
-            btnExportar.Click += btnExportar_Click;
+            label.Click += label_Click;
             // 
             // Form1
             // 
@@ -141,8 +122,6 @@
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImage = Properties.Resources._5189_20250203085217__1_;
             ClientSize = new Size(800, 512);
-            Controls.Add(btnExportar);
-            Controls.Add(txtFiltro);
             Controls.Add(label);
             Controls.Add(Arq1);
             Controls.Add(Arq4);
@@ -170,7 +149,5 @@
         private TextBox Arq4;
         private TextBox Arq1;
         private Label label;
-        private TextBox txtFiltro;
-        private Button btnExportar;
     }
 }
