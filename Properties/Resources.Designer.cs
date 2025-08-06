@@ -63,6 +63,16 @@ namespace WinFormsApp2.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1_870x500 {
+            get {
+                object obj = ResourceManager.GetObject("1-870x500", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _5189_20250203085217__1_ {
             get {
                 object obj = ResourceManager.GetObject("5189_20250203085217 (1)", resourceCulture);

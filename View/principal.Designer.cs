@@ -47,7 +47,7 @@
             panel1.Controls.Add(button1);
             panel1.Location = new Point(-1, -2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1012, 36);
+            panel1.Size = new Size(875, 36);
             panel1.TabIndex = 10;
             panel1.Paint += panel1_Paint;
             // 
@@ -57,7 +57,7 @@
             button1.BackgroundImageLayout = ImageLayout.Zoom;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(940, 3);
+            button1.Location = new Point(803, 3);
             button1.Name = "button1";
             button1.Size = new Size(69, 30);
             button1.TabIndex = 11;
@@ -69,7 +69,7 @@
             btnAbrirProcessador.BackColor = Color.White;
             btnAbrirProcessador.BackgroundImageLayout = ImageLayout.Center;
             btnAbrirProcessador.Font = new Font("Bahnschrift SemiCondensed", 24F);
-            btnAbrirProcessador.Location = new Point(398, 149);
+            btnAbrirProcessador.Location = new Point(22, 117);
             btnAbrirProcessador.Name = "btnAbrirProcessador";
             btnAbrirProcessador.Size = new Size(118, 57);
             btnAbrirProcessador.TabIndex = 12;
@@ -82,7 +82,8 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Bahnschrift SemiCondensed", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(337, 47);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(-1, 37);
             label1.Name = "label1";
             label1.Size = new Size(616, 77);
             label1.TabIndex = 13;
@@ -94,9 +95,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            BackgroundImage = Properties.Resources._5189_20250203085217__1_;
+            BackgroundImage = Properties.Resources._1_870x500;
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1010, 560);
+            ClientSize = new Size(873, 503);
             Controls.Add(label1);
             Controls.Add(btnAbrirProcessador);
             Controls.Add(panel1);
