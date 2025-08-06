@@ -79,5 +79,15 @@ namespace WinFormsApp2.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trem_de_carga_da_vale_292529 {
+            get {
+                object obj = ResourceManager.GetObject("trem-de-carga-da-vale-292529", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

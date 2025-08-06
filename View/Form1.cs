@@ -199,5 +199,16 @@ namespace WinFormsApp2.View
 
         }
 
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("EM DESENVOLVIMENTO", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        private void btnBD_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("EM DESENVOLVIMENTO!.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
     }
 }

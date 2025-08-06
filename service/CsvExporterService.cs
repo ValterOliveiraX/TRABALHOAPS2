@@ -56,5 +56,9 @@ namespace WinFormsApp2.service
                 // Escreve o conteúdo no arquivo, usando UTF-8 para garantir a compatibilidade com acentos
                 File.WriteAllText(caminhoArquivo, sb.ToString(), Encoding.UTF8);
             }
+
+        //futuramente aqui será inserida uma função que vai reaizar um filtro por algum
+        //parâmetro de busca, sendo por família, rodeiro ou por outro parâmetro
+        //retornando tudo a uma lista e ser exportado para. csv para exportação dos dados.
         }
     }

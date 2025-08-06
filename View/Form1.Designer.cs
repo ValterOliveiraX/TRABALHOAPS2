@@ -36,6 +36,8 @@
             Arq4 = new TextBox();
             Arq1 = new TextBox();
             btnExportarCsv = new Button();
+            btnFiltrar = new Button();
+            btnBD = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             SuspendLayout();
             // 
@@ -114,13 +116,38 @@
             btnExportarCsv.UseVisualStyleBackColor = true;
             btnExportarCsv.Click += btnExportarCsv_Click;
             // 
+            // btnFiltrar
+            // 
+            btnFiltrar.Font = new Font("Bahnschrift SemiCondensed", 15F);
+            btnFiltrar.Location = new Point(243, 364);
+            btnFiltrar.Name = "btnFiltrar";
+            btnFiltrar.Size = new Size(163, 41);
+            btnFiltrar.TabIndex = 13;
+            btnFiltrar.Text = "Filtros:";
+            btnFiltrar.UseVisualStyleBackColor = true;
+            btnFiltrar.Click += btnFiltrar_Click;
+            // 
+            // btnBD
+            // 
+            btnBD.Font = new Font("Bahnschrift SemiCondensed", 15F);
+            btnBD.Location = new Point(421, 364);
+            btnBD.Name = "btnBD";
+            btnBD.Size = new Size(123, 41);
+            btnBD.TabIndex = 14;
+            btnBD.Text = "Salvar no BD";
+            btnBD.UseVisualStyleBackColor = true;
+            btnBD.Click += btnBD_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            BackgroundImage = Properties.Resources._5189_20250203085217__1_;
-            ClientSize = new Size(800, 417);
+            BackgroundImage = Properties.Resources.trem_de_carga_da_vale_292529;
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(800, 447);
+            Controls.Add(btnBD);
+            Controls.Add(btnFiltrar);
             Controls.Add(btnExportarCsv);
             Controls.Add(Arq1);
             Controls.Add(Arq4);
@@ -148,5 +175,7 @@
         private TextBox Arq4;
         private TextBox Arq1;
         private Button btnExportarCsv;
+        private Button btnFiltrar;
+        private Button btnBD;
     }
 }

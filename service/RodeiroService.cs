@@ -40,7 +40,7 @@ namespace WinFormsApp2.service
                                   km.Quilometragem,
                                   n?.NotaDeManutencao
                               };
-
+            //parte que fiou responsável pelo filtro, estou devendo o agrupamento por família...
             var dadosFiltrados = dadosUnidos
                 .Where(d => d.Quilometragem < 100000 && string.IsNullOrEmpty(d.NotaDeManutencao))
                 .ToList();
