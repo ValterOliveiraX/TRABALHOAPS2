@@ -81,6 +81,11 @@ namespace WinFormsApp2
         {
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
         // primeiro botçao de anexar arquivo
 
     }

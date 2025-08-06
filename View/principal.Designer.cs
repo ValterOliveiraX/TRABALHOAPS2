@@ -35,6 +35,8 @@
             button1 = new Button();
             btnAbrirProcessador = new Button();
             label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,7 +71,7 @@
             btnAbrirProcessador.BackColor = Color.White;
             btnAbrirProcessador.BackgroundImageLayout = ImageLayout.Center;
             btnAbrirProcessador.Font = new Font("Bahnschrift SemiCondensed", 24F);
-            btnAbrirProcessador.Location = new Point(22, 117);
+            btnAbrirProcessador.Location = new Point(12, 131);
             btnAbrirProcessador.Name = "btnAbrirProcessador";
             btnAbrirProcessador.Size = new Size(118, 57);
             btnAbrirProcessador.TabIndex = 12;
@@ -90,6 +92,31 @@
             label1.Text = "Adequação de Rodeiros";
             label1.Click += label1_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Bahnschrift SemiCondensed", 9F);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(12, 466);
+            label2.Name = "label2";
+            label2.Size = new Size(775, 14);
+            label2.TabIndex = 14;
+            label2.Text = "Sistema levantamento de dados e fitragem dos rodeiros disponiveis para uso na próxima corrida, considerando disponibilidade, saúde e notas de manutenção.";
+            label2.Click += label2_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Bahnschrift SemiCondensed", 9F);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(12, 480);
+            label3.Name = "label3";
+            label3.Size = new Size(243, 14);
+            label3.TabIndex = 15;
+            label3.Text = "֎●Sistema feito por: Valter, Danielle e Eduardo. ";
+            // 
             // app
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -98,6 +125,8 @@
             BackgroundImage = Properties.Resources._1_870x500;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(873, 503);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnAbrirProcessador);
             Controls.Add(panel1);
@@ -121,5 +150,7 @@
         private Button button1;
         private Button btnAbrirProcessador;
         private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }
