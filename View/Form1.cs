@@ -201,8 +201,10 @@ namespace WinFormsApp2.View
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("EM DESENVOLVIMENTO", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return;
+            //MessageBox.Show("EM DESENVOLVIMENTO", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            // return;
+            Form2 formDoProcessador = new Form2();
+            formDoProcessador.ShowDialog(); // Abre a janela de processamento
         }
 
         private void btnBD_Click(object sender, EventArgs e)
