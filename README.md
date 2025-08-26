@@ -1,6 +1,6 @@
 
 # Adequeção de Rodeiros para otimização de logistica de Entregas
-
+## a documentação ompleta aqui: https://docs.google.com/document/d/1uPfM6MWjMksWBVvNndMKHnXeUBzAZG9DYm1PRTNWRIE/edit?usp=sharing. \
 Este projeto tem como objetivo apresentar o levantamento inicial de requisitos para o desenvolvimento de um sistema de logística de rodeiros de trens, destinado à empresa "VALE S/A". Atualmente, este processo na empresa é manual, o que resulta em diversos desafios operacionais. Todas as transações, sendo na maioria delas busca de rodeiros, são realizadas com o auxílio de arquivos excel gerados por diferentes sistemas manuais, que são feitos com tecnologia distintas, impossibilitando a comunicação e criação de relatórios mais simplificados. Além disso, o controle de rodeiros é realizado de forma manual, com registros dispersos em diversos locais, dificultando a gestão e o controle do estoque de rodeiros disponíveis.
 Um dos principais problemas do sistema atual é a dificuldade em consultar a disponibilidade dos rodeiros. Durante a busca, o usuário deve executar um conflito de dados entre planilhas de Excel que são geradas por esses sistemas distintos. 
 O sistema proposto visa solucionar esses problemas e otimizar o processo de busca e logística desses rodeiros. Através da automação, o sistema permitirá o conflito de dados de forma mais eficiente, rápida e precisa, seguindo as regras de negócio, como por exemplo a quilometragem, notas de manutenção e disponibilidade de um determinado rodeiro.
