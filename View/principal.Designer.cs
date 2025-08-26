@@ -100,9 +100,9 @@
             label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(12, 466);
             label2.Name = "label2";
-            label2.Size = new Size(775, 14);
+            label2.Size = new Size(774, 14);
             label2.TabIndex = 14;
-            label2.Text = "Sistema levantamento de dados e fitragem dos rodeiros disponiveis para uso na próxima corrida, considerando disponibilidade, saúde e notas de manutenção.";
+            label2.Text = "Sistema de processamento e levantamento de Rodeiros disponiveis para uso na próxima corrida, considerando disponibilidade, saúde e notas de manutenção.";
             label2.Click += label2_Click;
             // 
             // label3

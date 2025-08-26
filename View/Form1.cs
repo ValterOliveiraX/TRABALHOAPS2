@@ -151,34 +151,7 @@ namespace WinFormsApp2.View
         {
 
         }
-        //nao aplicado
-        private void ExportarParaExcel(List<dynamic> dados, string caminho)
-        {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Garante a licença
-
-            using (var package = new ExcelPackage())
-            {
-                var worksheet = package.Workbook.Worksheets.Add("Resultados");
-
-                // Escreve os dados na planilha, começando da célula A1
-                worksheet.Cells["A1"].LoadFromCollection(dados, true);
-
-                // Formata o cabeçalho
-                using (var range = worksheet.Cells[1, 1, 1, worksheet.Dimension.End.Column])
-                {
-                    range.Style.Font.Bold = true;
-                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    range.Style.Fill.BackgroundColor.SetColor(Color.LightGray);
-                }
-
-                // Ajusta a largura das colunas
-                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-
-                // Salva o arquivo
-                File.WriteAllBytes(caminho, package.GetAsByteArray());
-            }
-        }
-
+  
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -201,6 +174,7 @@ namespace WinFormsApp2.View
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
+            //esse era um aviso tmporário para caso de MANUTENÇÃO
             //MessageBox.Show("EM DESENVOLVIMENTO", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             // return;
             Form2 formDoProcessador = new Form2();
